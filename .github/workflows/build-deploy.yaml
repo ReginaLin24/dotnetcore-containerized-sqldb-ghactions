@@ -17,8 +17,8 @@ on:
 # For detailed sample explanation: https://github.com/Azure-Samples/dotnetcore-containerized-sqldb-ghactions/blob/main/README.md
 
 env:
-  AZURE_RESOURCE_GROUP: rg-todo-sample  # target resource, must match the {resource-group-name} you setup in the pre-requisties
-  WEB_APP_NAME: app-todo-sample         # set the name for the Web App on Azure
+  AZURE_RESOURCE_GROUP: rl-gh-rg  # target resource, must match the {resource-group-name} you setup in the pre-requisties
+  WEB_APP_NAME: rl-webapp-01         # set the name for the Web App on Azure
   CONTAINER_IMAGE_NAME: app-todo-sample # set the name for the container image
   SQL_CONNECTION_STRING: ${{ secrets.SQL_CONNECTION_STRING }}  # connection string for the Azure SQL database -> must be in the secrets
   ACR_NAME: acrtodosample               # set the name for the Azure Container Registry
@@ -29,6 +29,9 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+        id-token: write
+        contents: read
     steps:
     - name: Checkout Source Code
       uses: actions/checkout@v2
