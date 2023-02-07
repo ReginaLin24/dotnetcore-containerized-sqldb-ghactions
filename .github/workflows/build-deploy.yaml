@@ -63,7 +63,6 @@ jobs:
     permissions:
       id-token: write
       contents: read
-    environment: test
     steps:
     - name: Checkout Source Code
       uses: actions/checkout@v2
